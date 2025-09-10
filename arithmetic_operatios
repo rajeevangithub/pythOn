@@ -1,0 +1,8 @@
+num1=int(input("Enter a number:"))
+num2=int(input("Enter another number:"))
+print("value after addition",num1+num2)
+print("value after subtraction",num1-num2)
+print("value after multiplication",num1*num2)
+print("value after division",num1/num2)
+print("remainder of num1 & num2",num1%num2)
+print("value after flor division of  num1 & num2",num1//num2)
