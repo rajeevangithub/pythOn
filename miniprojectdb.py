@@ -5,54 +5,54 @@ import random
 conn = sqlite3.connect('projectsql.db')
 c = conn.cursor()
 
-# c.execute('''
-# CREATE TABLE IF NOT EXISTS users (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     first_name TEXT,
-#     last_name TEXT,
-#     role TEXT,
-#     email TEXT,
-#     phone INTEGER,
-#     password TEXT
-#           );
-# ''')
+c.execute('''
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name TEXT,
+    last_name TEXT,
+    role TEXT,
+    email TEXT,
+    phone INTEGER,
+    password TEXT
+          );
+''')
 
 
 
-# c.execute('''
-# INSERT INTO users ( first_name, last_name,role, email, phone, password)
-# VALUES ( ?, ?, ?, ?, ?,?)
-# ''', ( 'Rajeev', 'P S','Admin', 'rajeev@example.com', 9876543210, 'mypassword123'))
-# c.execute("""insert into users( first_name, last_name,role, email, phone, password)
-# values(?,?,?,?,?,?) """,('sam','jhon','user','sam@gmail.com','2423423','sam@123'))
-# c.execute(""" insert into users(first_name, last_name,role, email, phone, password)values(?,?,?,?,?,?)""",('saviar','cs','user','saviar@gmail.com','2423423','xaviar@123'))
-# conn.commit()
+c.execute('''
+INSERT INTO users ( first_name, last_name,role, email, phone, password)
+VALUES ( ?, ?, ?, ?, ?,?)
+''', ( 'Rajeev', 'P S','Admin', 'rajeev@example.com', 9876543210, 'mypassword123'))
+c.execute("""insert into users( first_name, last_name,role, email, phone, password)
+values(?,?,?,?,?,?) """,('sam','jhon','user','sam@gmail.com','2423423','sam@123'))
+c.execute(""" insert into users(first_name, last_name,role, email, phone, password)values(?,?,?,?,?,?)""",('saviar','cs','user','saviar@gmail.com','2423423','xaviar@123'))
+conn.commit()
 
-# c.execute('''
-# CREATE TABLE IF NOT EXISTS transactions (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     user_id INTEGER,
-#     account_id INTEGER,
-#     amount REAL,
-#     date DATE,
-#     type TEXT,
-#     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-#     FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
-# );
-# ''')
+c.execute('''
+CREATE TABLE IF NOT EXISTS transactions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    account_id INTEGER,
+    amount REAL,
+    date DATE,
+    type TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
+);
+''')
 
-# c.execute('''
-#  CREATE TABLE IF NOT EXISTS accounts (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     user_id INTEGER,
-#      balance REAL DEFAULT 0.0,
-#      account_no TEXT UNIQUE,
-#      type TEXT,
-#      status TEXT,
-#      created_at DATE,    
-#      FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE);
+c.execute('''
+ CREATE TABLE IF NOT EXISTS accounts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+     balance REAL DEFAULT 0.0,
+     account_no TEXT UNIQUE,
+     type TEXT,
+     status TEXT,
+     created_at DATE,    
+     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE);
 
-#  ''')
+ ''')
 
 
 def login(user):
